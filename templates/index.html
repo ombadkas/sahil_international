@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sahil International</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <div class="logo">SAHIL <span>International</span></div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#callback">Contact</a></li>
+  </ul>
+</nav>
+
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+          <div class="header">SAHIL</div>
+          <div class="header2">International</div>
+        <h1>Your Trusted Partner in Foreign Trade</h1>
+        <p>Specializing in freight, customs, documentation, and compliance solutions.</p>
+        <a href="#callback" class="btn">Contact Us</a>
+      </div>
+    </section>
+  </header>
+
+
+
+  <section class="about" id="about">
+    <div class="text-content">
+      <div class="header3">About Our <span>Company</span></div>
+      <p>
+        Sahil International is your trusted partner in navigating the complexities of foreign trade.
+        With a strong focus on reliability, compliance, and client-centric services, we specialize
+        in a comprehensive range of export-import support solutions, including DGFT, CUSTOMS, GST,
+        and trade documentation services.<br><br>
+        With decades of industry experience, our team ensures that businesses—whether startups or
+        established enterprises—can focus on growth while we handle the complexities of trade
+        regulations.
+      </p>
+    </div>
+
+
+  <section class="mission-vision">
+    <div class="vision">
+      <div class="h3">Our Vision</div>
+      <p>Our vision is to provide cost-effective, end-to-end solutions that
+ ease cash flow pressure and remove operational hassles — so
+ you can focus on what matters most: production, innovation,
+ and growth.
+ We aim to be more than just a service provider — we strive to be
+ a trusted partner in your success story, offering reliable support,
+ deep expertise, and a commitment to helping Indian trade thrive
+ on the global stage.</p>
+    </div>
+    <div class="mission">
+      <div class="h3">Our Mission</div>
+      <p> Powering Exporters & Manufacturers Importer with Seamless Trade
+ Solutions
+ With 20+ years of experience in logistics, freight forwarding, customs
+ clearance, and trade compliance, Sahil International  understands the
+ real challenges faced by manufacturers and exporters,  especially
+ startups.</p>
+    </div>
+  </section>
+
+
+<section class="services" id="services">
+  <div class="h3">Our Services</div>
+
+
+  <div class="service-cards">
+    <div class="card" data-title="Freight Forwarding" data-desc="Air, Sea & Road freight solutions (FCL, LCL, Express Cargo), Import/Export cargo
+ movement, Global agent network.">Freight Forwarding</div>
+    <div class="card" data-title="Customs Clearance" data-desc="Import/Export clearance at major ports, HS code classification, Duty structure
+ advisory, Documentation & representation with Customs.">Customs Clearance</div>
+    <div class="card" data-title="Bonded Warehousing" data-desc="Secure bonded warehousing under Deferred Duty options, Documentation for
+ warehousing bonds, Inventory control, GST & compliance support.">Bonded Warehousing</div>
+    <div class="card" data-title="Domestic Transportation" data-desc="Pan-India trucking and transport solutions, Containerized and Over-Dimensional Cargo
+ (ODC) handling, Route planning and scheduling.">Domestic Transportation</div>
+    <div class="card" data-title="Export Incentive Advisory" data-desc=" RoDTEP, EPCG license application & tracking, Duty Drawback claims, MEIS/SEIS
+ benefits, EODC & Redemption.">Export Incentive Advisory</div>
+    <div class="card" data-title="DPD/DPE Port Management" data-desc="Direct Port Delivery & Entry registration, Terminal coordination, Container movement
+ planning, Real-time port operations monitoring.">DPD/DPE Port Management</div>
+  </div>
+
+      <div id="serviceDisplayBox" class="service-display-box hidden">
+    <div id="serviceTitle" class="service-title"></div>
+    <div id="serviceDescription" class="service-description"></div>
+  </div>
+</section>
+
+
+  <script>
+  const cards = document.querySelectorAll('.card');
+  const displayBox = document.getElementById('serviceDisplayBox');
+  const titleBox = document.getElementById('serviceTitle');
+  const descBox = document.getElementById('serviceDescription');
+  let index = 0;
+  let timeout;
+
+  const showService = (card) => {
+    const title = card.getAttribute('data-title');
+    const description = card.getAttribute('data-desc');
+
+    titleBox.textContent = title;
+    descBox.textContent = description;
+
+    displayBox.classList.remove('hidden');
+    displayBox.classList.add('show');
+
+    setTimeout(() => displayBox.classList.remove('show'), 3000);
+  };
+
+  const autoRotate = () => {
+    showService(cards[index]);
+    index = (index + 1) % cards.length;
+    timeout = setTimeout(autoRotate, 4000);
+  };
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      clearTimeout(timeout);
+      showService(card);
+      timeout = setTimeout(autoRotate, 4000);
+    });
+  });
+
+  autoRotate();
+</script>
+
+
+  <section class="why-us" id="why-us">
+      <div class="h3">Why us ?</div>
+    <div class="subheader">We don’t just move goods
+ We unlock your working capital</div>
+    <p>With a deep understanding of logistics challenges faced by growing businesses,
+ Sahil International stands out as a trusted partner for efficient, transparent, and
+ compliant trade solutions. Here's what sets us apart:</p>
+    <ul>
+      <li>Specialized in startups & MSMEs</li>
+      <li>Deferred duty & bonded warehousing expertise</li>
+      <li>Single-window logistics contact</li>
+      <li>20+ years of domain experience</li>
+      <li>Transparent pricing & real-time tracking</li>
+    </ul>
+  </section>
+
+<section class="callback-form" id="callback">
+  <div class="h3">Request a Callback</div>
+  <form id="callbackForm" onsubmit="return triggerPython(event);">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="tel" name="phone" placeholder="Phone Number" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <textarea name="message" placeholder="Describe your requirement..." required></textarea>
+    <button type="submit">Request Callback</button>
+  </form>
+  <p id="formStatus" style="margin-top: 15px; color: green;"></p>
+</section>
+
+
+
+
+        <footer class="contact" id="contact">
+    <div class="h3">Contact Us</div>
+    <p>📞 +91 98200 08413</p>
+    <p>🌐 <a href="http://www.sahilinter.com" target="_blank">www.sahilinter.com</a></p>
+    <p>📧 samirkapadia28@gmail.com</p>
+    <p>📍 Mumbai, India</p>
+  </footer>
+
+<script>
+  async function triggerPython(event) {
+    event.preventDefault(); // prevent form from submitting normally
+
+    const form = document.getElementById("callbackForm");
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      message: formData.get("message")
+    };
+
+    try {
+      const response = await fetch('/run-python', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.text();
+      document.getElementById("formStatus").textContent = result;
+      form.reset();
+    } catch (error) {
+      document.getElementById("formStatus").textContent = "Something went wrong!";
+    }
+
+    return false;
+  }
+</script>
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>
